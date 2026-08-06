@@ -1,0 +1,40 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000008000dc7150 .scope module, "tb" "tb" 2 7;
+ .timescale 0 0;
+L_0000008000cbc028 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000008000dcdfb0_0 .net "area1", 0 0, L_0000008000cbc028;  1 drivers
+L_0000008000cbc070 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000008000c71630_0 .net "area2", 0 0, L_0000008000cbc070;  1 drivers
+S_0000008000dc72e0 .scope module, "dut1" "rectangle" 2 12, 2 1 0, S_0000008000dc7150;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "area";
+P_0000008000c42c30 .param/l "LENGTH" 0 2 1, +C4<00000000000000000000000000001010>;
+P_0000008000c42c68 .param/l "WIDTH" 0 2 1, +C4<00000000000000000000000000000101>;
+v0000008000c42aa0_0 .net "area", 0 0, L_0000008000cbc028;  alias, 1 drivers
+S_0000008000dcae40 .scope module, "dut2" "rectangle" 2 14, 2 1 0, S_0000008000dc7150;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "area";
+P_0000008000c762d0 .param/l "LENGTH" 0 2 1, +C4<00000000000000000000000000010100>;
+P_0000008000c76308 .param/l "WIDTH" 0 2 1, +C4<00000000000000000000000000000100>;
+v0000008000c428d0_0 .net "area", 0 0, L_0000008000cbc070;  alias, 1 drivers
+    .scope S_0000008000dc7150;
+T_0 ;
+    %vpi_call 2 18 "$display", "DUT1 -> LENGTH=%0d WIDTH=%0d AREA=%0d", P_0000008000c42c30, P_0000008000c42c68, v0000008000dcdfb0_0 {0 0 0};
+    %vpi_call 2 21 "$display", "DUT2 -> LENGTH=%0d WIDTH=%0d AREA=%0d", P_0000008000c762d0, P_0000008000c76308, v0000008000c71630_0 {0 0 0};
+    %delay 10, 0;
+    %vpi_call 2 25 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "parameters_ex.v";
